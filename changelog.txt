@@ -1,0 +1,33 @@
+robotframework adapter
+	- Uz hotovo
+		- transformujem args do dict
+		- vypis som prepisal do json-u ktory ulozim medzi logy timestamp-console.json
+			- tu ešte potrebujem upravit v pipenv list aby balicky neboli v stdout ale v niecom peknom 
+			- pipenv_list ma "return_code" ostatne veci maju "exit" tak to treba zjednotit
+			- a pridat na to osetrenie a posielanie mailov
+
+		- RobotFrameworkAdapter posielam mu parametre ako project a title a neviem prečo..
+			to bolo kvôli uploadu do tr, robotframework adapter vedel cestu k suboru a vsetko toto
+			tak to som vynal z rf adaptera
+
+		- vsimol som si, ze je problem s tým, že logy nemajú v timestamp-e medzi rokom, mesiacom a dňom 
+			pomlčky a console.json tam tie pomlčky v timestampe majú a zoraďovanie mi potom dobre nefunguje
+
+		- problem ak padne upload na testrail tak asi nie je dobre vyhodit vynimku
+		
+		- TestRail
+			- api na projekty
+			- api get_templates vracia nieco ine nez co potrebujem, zda sa, ze api
+			templates vracia get_report(s) neviem teraz ci singular alebo plural
+			- run_reports
+			- stiahnem pdf reporty
+		
+
+
+	- Planujem
+		- chcem zapisanie do db vyňať z RobotFrameworkAdapter-a
+		- chcem single on flag dat do robot frameworku
+		- upload_results_to_db tiež vytiahnut z RobotFrameworkAdapter-a
+			to som už ako keby vynal len to ešte musim spojazdnit,
+			hlavny rozdiel teraz bude v tom, že poslem tejto funkcii pole s vysledkami ktore sa zapisu 
+			a neriesim funkciu ako get_test_resolts() v rf adaptery  
